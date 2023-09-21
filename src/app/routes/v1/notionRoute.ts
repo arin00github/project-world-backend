@@ -10,12 +10,19 @@ export class NotionRoute {
 
   private setRoute() {
     this.setGet();
+    this.setPost();
     //
   }
 
   private setGet() {
     this.router.get("/posts", (req, res) => {
       this.notionCtrl.getArchivePostList(req, res).then();
+    });
+  }
+
+  private setPost() {
+    this.router.post("/post", (req, res) => {
+      this.notionCtrl.createArchivePost(req, res).then();
     });
   }
 
