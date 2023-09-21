@@ -8,7 +8,7 @@ export class Logger {
     if (!this.instance) {
       this.instance = new Logger();
     }
-    return this.instance;
+    return this.instance as Logger;
   }
 
   init() {
@@ -28,7 +28,7 @@ export class Logger {
   }
 
   getLogger() {
-    return this.logger;
+    return this.logger as winston.Logger;
   }
 
   setLogLevel(level: string) {

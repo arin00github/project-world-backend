@@ -3,6 +3,7 @@ import * as winston from "winston";
 
 import { Logger } from "./app/common/utils/logger";
 import { Index } from "./app/routes";
+import { mysqldb } from "./db/dbClient";
 
 class ProjectServer {
   private logger: winston.Logger | undefined;
@@ -43,7 +44,7 @@ class ProjectServer {
     this.initNodeSrvConfig();
     this.initRoutes();
     if (this.app) {
-      this.app.set("port", 7000);
+      this.app.set("port", 8080);
       this.app.listen(this.app.get("port"), () => {
         if (this.logger) {
           this.logger.info("####################");
@@ -58,3 +59,7 @@ class ProjectServer {
 //--exec : 실행할 명령어를 지정할 수 있습니다.
 
 ProjectServer.startProject().createServer().then();
+// mysqldb.query("Select * from lck_teams", (err, res, field) => {
+//   if (err) throw err;
+//   console.log("query success", res);
+// });
